@@ -10,7 +10,8 @@ router = Router()
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer('Подпишитесь на канал: https://t.me/thewayoffreelancing', reply_markup=key.main)
+    user_name = message.from_user.username
+    await message.answer(f'Салют, {user_name}! Чтобы написать пользователю, тебе нужно подписаться на канал: https://t.me/grozny_boss_blog', reply_markup=key.main)
 
 @router.message(F.text == 'Проверить подписку')
 async def valid(message: Message):
@@ -22,7 +23,7 @@ async def valid(message: Message):
         
     res = new_result.split('>')[0]
     if res == "status=<ChatMemberStatus.LEFT: 'left'":
-        await message.answer('Подпишитесь на канал: https://t.me/thewayoffreelancing', reply_markup=key.main)
+        await message.answer('Подпишитесь на канал: https://t.me/grozny_boss_blog', reply_markup=key.validate)
 
             
     else: 
